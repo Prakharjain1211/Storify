@@ -26,6 +26,7 @@ export const sendEmailOTP = async ({ email }: { email: string }) => {
   const { account } = await createAdminClient();
   try {
     const session = await account.createEmailToken(ID.unique(), email);
+    // console.log("send email otp  method ,session = ", session);
     return session.userId;
   } catch (error) {
     handleError(
@@ -44,6 +45,9 @@ export const createAccount = async ({
 }) => {
   const existingUser = await getUserByEmail(email);
   const accountId = await sendEmailOTP({ email });
+
+  console.log("create account method ,accountId = ", accountId);
+
   if (!accountId) {
     throw new Error("Failed to send OTP. Please try again later.");
   }
@@ -121,6 +125,7 @@ export const signOutUser = async () => {
 export const signInUser = async ({ email }: { email: string }) => {
   try {
     const existingUser = await getUserByEmail(email);
+    console.log("sign in user method ,existingUser = ", existingUser);
 
     // User exists, send OTP
     if (existingUser) {

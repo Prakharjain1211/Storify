@@ -38,6 +38,7 @@ const OTPModal = ({
     try {
       // call your API to verify the OTP
       const sessionId = await verifySecret({ accountId, password});
+      console.log("sessionId", sessionId);
       if (sessionId) {
         router.push("/");
       }
@@ -107,7 +108,7 @@ const OTPModal = ({
                 type="button"
                 variant="link"
                 className="pl-1 text-brand"
-              // onClick={handleResendOtp}
+              onClick={handleResendOTP}
               >
                 Click here to resend
               </Button>

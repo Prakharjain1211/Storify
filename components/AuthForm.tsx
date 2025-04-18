@@ -17,6 +17,7 @@ import {
 } from "@/components/ui/form";
 import { createAccount, signInUser } from "@/lib/actions/user.actions";
 import OTPModal from "./OTPModal";
+
 type FormType = "sign-in" | "sign-up";
 
 const authFormSchema = (formType: FormType) => {
@@ -47,11 +48,12 @@ const AuthForm = ({ type }: { type: FormType }) => {
     setErrorMessage("");
     try {
       const user =
-      type ==="sign-up" ?
-      await createAccount({
-        fullName: values.fullName || "",
-        email: values.email
-      }): await signInUser({email: values.email})
+        type === "sign-up"
+          ? await createAccount({
+              fullName: values.fullName || "",
+              email: values.email,
+            })
+          : await signInUser({ email: values.email });
       setAccountId(user.accountId);
     } catch (error) {
       setErrorMessage("Failed to create account. Please try again later.");
@@ -74,7 +76,6 @@ const AuthForm = ({ type }: { type: FormType }) => {
                 <FormItem>
                   <div className="shad-form-item">
                     <FormLabel className="shad-form-label">Full Name</FormLabel>
-
                     <FormControl>
                       <Input
                         placeholder="Enter your full name"
@@ -83,7 +84,6 @@ const AuthForm = ({ type }: { type: FormType }) => {
                       />
                     </FormControl>
                   </div>
-
                   <FormMessage className="shad-form-message" />
                 </FormItem>
               )}
@@ -145,7 +145,9 @@ const AuthForm = ({ type }: { type: FormType }) => {
         </form>
       </Form>
       {/* OTP Verification */}
-      {accountId && (<OTPModal email = {form.getValues("email")} accountId={accountId} />)}
+      {accountId && (
+        <OTPModal email={form.getValues("email")} accountId={accountId} />
+      )}
     </>
   );
 };
