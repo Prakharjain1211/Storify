@@ -172,64 +172,64 @@ export const getFileIcon = (
   }
 };
 
-// // APPWRITE URL UTILS
-// // Construct appwrite file URL - https://appwrite.io/docs/apis/rest#images
-// export const constructFileUrl = (bucketFileId: string) => {
-//   return `${process.env.NEXT_PUBLIC_APPWRITE_ENDPOINT}/storage/buckets/${process.env.NEXT_PUBLIC_APPWRITE_BUCKET}/files/${bucketFileId}/view?project=${process.env.NEXT_PUBLIC_APPWRITE_PROJECT}`;
-// };
+// APPWRITE URL UTILS
+// Construct appwrite file URL - https://appwrite.io/docs/apis/rest#images
+export const constructFileUrl = (bucketFileId: string) => {
+  return `${process.env.NEXT_PUBLIC_APPWRITE_ENDPOINT}/storage/buckets/${process.env.NEXT_PUBLIC_APPWRITE_BUCKET}/files/${bucketFileId}/view?project=${process.env.NEXT_PUBLIC_APPWRITE_PROJECT}`;
+};
 
-// export const constructDownloadUrl = (bucketFileId: string) => {
-//   return `${process.env.NEXT_PUBLIC_APPWRITE_ENDPOINT}/storage/buckets/${process.env.NEXT_PUBLIC_APPWRITE_BUCKET}/files/${bucketFileId}/download?project=${process.env.NEXT_PUBLIC_APPWRITE_PROJECT}`;
-// };
+export const constructDownloadUrl = (bucketFileId: string) => {
+  return `${process.env.NEXT_PUBLIC_APPWRITE_ENDPOINT}/storage/buckets/${process.env.NEXT_PUBLIC_APPWRITE_BUCKET}/files/${bucketFileId}/download?project=${process.env.NEXT_PUBLIC_APPWRITE_PROJECT}`;
+};
 
-// // DASHBOARD UTILS
-// export const getUsageSummary = (totalSpace: any) => {
-//   return [
-//     {
-//       title: "Documents",
-//       size: totalSpace.document.size,
-//       latestDate: totalSpace.document.latestDate,
-//       icon: "/assets/icons/file-document-light.svg",
-//       url: "/documents",
-//     },
-//     {
-//       title: "Images",
-//       size: totalSpace.image.size,
-//       latestDate: totalSpace.image.latestDate,
-//       icon: "/assets/icons/file-image-light.svg",
-//       url: "/images",
-//     },
-//     {
-//       title: "Media",
-//       size: totalSpace.video.size + totalSpace.audio.size,
-//       latestDate:
-//         totalSpace.video.latestDate > totalSpace.audio.latestDate
-//           ? totalSpace.video.latestDate
-//           : totalSpace.audio.latestDate,
-//       icon: "/assets/icons/file-video-light.svg",
-//       url: "/media",
-//     },
-//     {
-//       title: "Others",
-//       size: totalSpace.other.size,
-//       latestDate: totalSpace.other.latestDate,
-//       icon: "/assets/icons/file-other-light.svg",
-//       url: "/others",
-//     },
-//   ];
-// };
+// DASHBOARD UTILS
+export const getUsageSummary = (totalSpace: any) => {
+  return [
+    {
+      title: "Documents",
+      size: totalSpace.document.size,
+      latestDate: totalSpace.document.latestDate,
+      icon: "/assets/icons/file-document-light.svg",
+      url: "/documents",
+    },
+    {
+      title: "Images",
+      size: totalSpace.image.size,
+      latestDate: totalSpace.image.latestDate,
+      icon: "/assets/icons/file-image-light.svg",
+      url: "/images",
+    },
+    {
+      title: "Media",
+      size: totalSpace.video.size + totalSpace.audio.size,
+      latestDate:
+        totalSpace.video.latestDate > totalSpace.audio.latestDate
+          ? totalSpace.video.latestDate
+          : totalSpace.audio.latestDate,
+      icon: "/assets/icons/file-video-light.svg",
+      url: "/media",
+    },
+    {
+      title: "Others",
+      size: totalSpace.other.size,
+      latestDate: totalSpace.other.latestDate,
+      icon: "/assets/icons/file-other-light.svg",
+      url: "/others",
+    },
+  ];
+};
 
-// export const getFileTypesParams = (type: string) => {
-//   switch (type) {
-//     case "documents":
-//       return ["document"];
-//     case "images":
-//       return ["image"];
-//     case "media":
-//       return ["video", "audio"];
-//     case "others":
-//       return ["other"];
-//     default:
-//       return ["document"];
-//   }
-// };
+export const getFileTypesParams = (type: string) => {
+  switch (type) {
+    case "documents":
+      return ["document"];
+    case "images":
+      return ["image"];
+    case "media":
+      return ["video", "audio"];
+    case "others":
+      return ["other"];
+    default:
+      return ["document"];
+  }
+};
