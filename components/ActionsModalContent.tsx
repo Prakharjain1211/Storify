@@ -27,7 +27,7 @@ const DetailRow = ({ label, value }: { label: string; value: string }) => (
 export const FileDetails = ({ file }: { file: Models.Document }) => {
   return (
     <>
-      {/* <ImageThumbnail file={file} /> */}
+      <ImageThumbnail file={file} />
       <div className="space-y-4 px-2 pt-2">
         <DetailRow label="Format:" value={file.extension} />
         <DetailRow label="Size:" value={convertFileSize(file.size)} />
@@ -47,8 +47,7 @@ interface Props {
 export const ShareInput = ({ file, onInputChange, onRemove }: Props) => {
   return (
     <>
-      {/* <ImageThumbnail file={file} /> */}
-
+      <ImageThumbnail file={file} />
       <div className="share-wrapper">
         <p className="subtitle-2 pl-1 text-light-100">
           Share file with other users
